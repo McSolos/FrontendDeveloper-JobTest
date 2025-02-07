@@ -1,6 +1,8 @@
- import React, { useState } from 'react'
+import React, { useState } from 'react';
 import { useNavigate } from "react-router-dom";
-import './Login.css'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import './Login.css';
 
 const mockUser = {
   email: "user@example.com",
@@ -10,8 +12,6 @@ const mockUser = {
 const LoginForm = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [errors, setErrors] = useState({});
-  const [loginError, setLoginError] = useState("");
   const navigate = useNavigate();
 
   const validateEmail = (email) => {
@@ -23,38 +23,39 @@ const LoginForm = () => {
   };
 
   const validateForm = () => {
-    let errors = {};
+    let valid = true;
     if (!email) {
-      errors.email = "Email is required";
+      toast.error("Email is required");
+      valid = false;
     } else if (!validateEmail(email)) {
       if (!email.includes("@")) {
-        errors.email = "Email must contain '@' symbol";
+        toast.error("Email must contain '@' symbol");
       } else if (!email.includes(".")) {
-        errors.email = "Email must contain a domain (e.g., .com, .org)";
+        toast.error("Email must contain a domain (e.g., .com, .org)");
       } else {
-        errors.email = "Email format is incorrect";
+        toast.error("Email format is incorrect");
       }
+      valid = false;
     }
     
     if (!password) {
-      errors.password = "Password is required";
+      toast.error("Password is required");
+      valid = false;
     } else if (!validatePassword(password)) {
-      errors.password = "Password must be at least 8 characters long and include both letters and numbers";
+      toast.error("Password must be at least 8 characters long and include both letters and numbers");
+      valid = false;
     }
-
-    setErrors(errors);
-    return Object.keys(errors).length === 0;
+    return valid;
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setLoginError("");
     if (validateForm()) {
       if (email === mockUser.email && password === mockUser.password) {
-        alert("Login successful!");
+        toast.success("Login successful!");
         navigate("/transactions");
       } else {
-        setLoginError("Invalid email or password");
+        toast.error("Invalid email or password");
       }
     }
   };
@@ -63,7 +64,6 @@ const LoginForm = () => {
     <div className="login-container">
       <h2>Online Banking Login</h2>
       <p>Use: user@example.com / password123</p>
-      {loginError && <p className="error-message">{loginError}</p>}
       <form onSubmit={handleSubmit}>
         <div className="form-group">
           <label>Email</label>
@@ -73,7 +73,6 @@ const LoginForm = () => {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
-          {errors.email && <p className="error-message">{errors.email}</p>}
         </div>
 
         <div className="form-group">
@@ -84,15 +83,15 @@ const LoginForm = () => {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
-          {errors.password && <p className="error-message">{errors.password}</p>}
         </div>
 
         <button type="submit" className="login-button">
           Login
         </button>
       </form>
+      <ToastContainer position="top-center" />
     </div>
   );
 };
 
-export default LoginForm
+export default LoginForm;

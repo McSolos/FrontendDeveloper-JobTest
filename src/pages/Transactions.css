@@ -1,46 +1,79 @@
-.transactions-container {
-    max-width: 800px;
-    margin: 20px auto;
-    padding: 20px;
-    background: #f9f9f9;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    text-align: center;
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f9fafb;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+#heading {
+  font-size: 2rem;
+  font-weight: 600;
+  color: #1a1a1a;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.transactions-table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #ffffff;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.transactions-table thead {
+  background-color: #4f46e5; 
+  color: #ffffff;
+}
+
+.transactions-table th {
+  padding: 1rem;
+  text-align: left;
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+.transactions-table tbody tr {
+  border-bottom: 1px solid #e5e7eb;
+  transition: background-color 0.2s ease;
+}
+
+.transactions-table tbody tr:hover {
+  background-color: #f3f4f6;
+}
+
+.transactions-table td {
+  padding: 1rem;
+  font-size: 0.95rem;
+  color: #374151;
+}
+
+.positive {
+  color: #10b981;
+  font-weight: 500;
+}
+
+.negative {
+  color: #ef4444; 
+  font-weight: 500;
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 1rem;
   }
-  
-  h2 {
-    color: #333;
-  }
-  
-  .transactions-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
-  }
-  
-  .transactions-table th, 
+
+  .transactions-table th,
   .transactions-table td {
-    padding: 12px;
-    border: 1px solid #ddd;
-    text-align: left;
+    padding: 0.75rem;
   }
-  
-  .transactions-table th {
-    background-color: #007bff;
-    color: white;
+
+  #heading {
+    font-size: 1.75rem;
   }
-  
-  .transactions-table tr:nth-child(even) {
-    background-color: #f2f2f2;
-  }
-  
-  .positive {
-    color: green;
-    font-weight: bold;
-  }
-  
-  .negative {
-    color: red;
-    font-weight: bold;
-  }
-  
+}

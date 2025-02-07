@@ -6,6 +6,7 @@
 |-- public
     |-- vite.svg
 |-- README.md
+|-- Requirements.txt
 |-- src
     |-- App.css
     |-- App.jsx
@@ -17,6 +18,7 @@
     |-- pages
         |-- Login.css
         |-- LoginForm.jsx
+        |-- Transaction.json
         |-- Transactions.css
         |-- Transactions.jsx
 |-- vite.config.js

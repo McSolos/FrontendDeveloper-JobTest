@@ -7,7 +7,7 @@ const Transactions = () => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    fetch("/src/pages/Transaction.json")
+    fetch("/Transaction.json")
       .then((response) => {
         if (!response.ok) {
           throw new Error("Failed to load transactions");

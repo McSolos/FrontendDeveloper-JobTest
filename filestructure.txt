@@ -4,6 +4,7 @@
 |-- package-lock.json
 |-- package.json
 |-- public
+    |-- Transaction.json
     |-- vite.svg
 |-- README.md
 |-- Requirements.txt
@@ -18,7 +19,6 @@
     |-- pages
         |-- Login.css
         |-- LoginForm.jsx
-        |-- Transaction.json
         |-- Transactions.css
         |-- Transactions.jsx
 |-- vite.config.js
